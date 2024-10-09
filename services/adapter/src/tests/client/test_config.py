@@ -28,7 +28,7 @@ def test_configs_defaults():
         mq_client_host="localhost:9092",
         adapter_config_path="/path/to/config",
         mongo_username="user",
-        mongo_password="password",
+        mongo_password="your_db_password",
         mongo_host="localhost:27017",
         opensearch_host="http://localhost:9202",
     )
@@ -41,7 +41,7 @@ def test_configs_defaults():
     assert config.mq_client_vector_consume_topic == "vector-response"
     assert config.adapter_config_path == "/path/to/config"
     assert config.mongo_username == "user"
-    assert config.mongo_password == "password"
+    assert config.mongo_password == "your_db_password"
     assert config.mongo_host == "localhost:27017"
     assert config.opensearch_host == "http://localhost:9202"
 
@@ -51,7 +51,7 @@ def test_overwrite_configs_with_env(monkeypatch):
     monkeypatch.setenv("MQ_CLIENT_HOST", "localhost:9092")
     monkeypatch.setenv("ADAPTER_CONFIG_PATH", "/path/to/config")
     monkeypatch.setenv("MONGO_USERNAME", "user")
-    monkeypatch.setenv("MONGO_PASSWORD", "password")
+    monkeypatch.setenv("MONGO_PASSWORD", "your_db_password")
     monkeypatch.setenv("MONGO_HOST", "localhost:27017")
     monkeypatch.setenv("OPENSEARCH_HOST", "http://localhost:9202")
 
@@ -60,7 +60,7 @@ def test_overwrite_configs_with_env(monkeypatch):
     assert config.mq_client_host == "localhost:9092"
     assert config.adapter_config_path == "/path/to/config"
     assert config.mongo_username == "user"
-    assert config.mongo_password == "password"
+    assert config.mongo_password == "your_db_password"
     assert config.mongo_host == "localhost:27017"
     assert config.opensearch_host == "http://localhost:9202"
 
@@ -72,7 +72,7 @@ def test_overwrite_configs_with_fields():
         mq_client_llm_topic="llm-request-2",
         adapter_config_path="/path/to/config",
         mongo_username="user",
-        mongo_password="password",
+        mongo_password="your_db_password",
         mongo_host="localhost:27017",
         opensearch_host="http://localhost:9202",
     )
@@ -81,7 +81,7 @@ def test_overwrite_configs_with_fields():
     assert config.mq_client_llm_topic == "llm-request-2"
     assert config.adapter_config_path == "/path/to/config"
     assert config.mongo_username == "user"
-    assert config.mongo_password == "password"
+    assert config.mongo_password == "your_db_password"
     assert config.mongo_host == "localhost:27017"
     assert config.opensearch_host == "http://localhost:9202"
 
@@ -90,7 +90,7 @@ def test_overwrite_configs_from_env_with_field(monkeypatch):
     monkeypatch.setenv("MQ_CLIENT_HOST", "localhost:9092")
     monkeypatch.setenv("ADAPTER_CONFIG_PATH", "/path/to/config")
     monkeypatch.setenv("MONGO_USERNAME", "user")
-    monkeypatch.setenv("MONGO_PASSWORD", "password")
+    monkeypatch.setenv("MONGO_PASSWORD", "your_db_password")
     monkeypatch.setenv("MONGO_HOST", "localhost:27017")
     monkeypatch.setenv("OPENSEARCH_HOST", "http://localhost:9202")
 
@@ -110,7 +110,7 @@ def test_configs_validation_error(monkeypatch):
     
     monkeypatch.setenv("ADAPTER_CONFIG_PATH", "/path/to/config")
     monkeypatch.setenv("MONGO_USERNAME", "user")
-    monkeypatch.setenv("MONGO_PASSWORD", "password")
+    monkeypatch.setenv("MONGO_PASSWORD", "your_db_password")
     monkeypatch.setenv("MONGO_HOST", "localhost:27017")
     monkeypatch.setenv("OPENSEARCH_HOST", "http://localhost:9202")
 
